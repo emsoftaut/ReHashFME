@@ -8,7 +8,7 @@ Ash's work on Rehabilitation Plans
 > javac DomXml.java
 > java DomXml
 ```
-The code gets updated into file.xml, which you can copy into any yakindu statechart sct file and it will generate the statechart automatically for you
+The code gets updated into file1.xml, which you can copy into any yakindu statechart sct file and it will generate the statechart automatically for you
 
 ## AND case
 
