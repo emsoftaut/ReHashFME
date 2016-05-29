@@ -33,6 +33,9 @@ public class DomXml {
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
 
+		// Number of sensors- 
+		int numberSensors = 3;
+
 		// Get the root element
 		Node company = doc.getFirstChild();
 
@@ -44,13 +47,14 @@ public class DomXml {
 		String sync2Id = get.getMe();
 		String regStateId = get.getMe();
 		String aggStateId = get.getMe();
-		// Flexible states ids.. depending of number of sensors
+		// Flexible states ids.. depending on number of sensors
 		String[] innerState1 = new String[50];
 		String[] innerState2 = new String[50];
-		innerState1[0] = get.getMe();
-		innerState1[1] = get.getMe();
-		innerState2[0] = get.getMe();
-		innerState2[1] = get.getMe();
+
+		//innerState1[0] = get.getMe();
+		//innerState1[1] = get.getMe();
+		//innerState2[0] = get.getMe();
+		//innerState2[1] = get.getMe();
 
 
 		// Save all the vertices' id's in an array
@@ -86,12 +90,25 @@ public class DomXml {
 		String[] outSync2 = new String[100]; 
 		String[] outSync3 = new String[100]; 
 
-		outSync1[0] = get.getMe();		
-		outSync1[1] = get.getMe();		
-		outSync2[0] = get.getMe();
-		outSync2[1] = get.getMe();
-		outSync3[0] = get.getMe();
-		outSync3[1] = get.getMe();
+		//outSync1[0] = get.getMe();		
+		//outSync1[1] = get.getMe();		
+		//outSync2[0] = get.getMe();
+		//outSync2[1] = get.getMe();
+		//outSync3[0] = get.getMe();
+		//outSync3[1] = get.getMe();
+
+		/// Would always be two innerState, for now
+			
+
+		for(int tempInner = 0 ; tempInner < numberSensors; tempInner++) {
+			outSync1[tempInner] = get.getMe();
+			outSync2[tempInner] = get.getMe();
+			outSync3[tempInner] = get.getMe();
+			innerState2[tempInner] = get.getMe();
+			innerState1[tempInner] = get.getMe();
+		}
+		innerState2[numberSensors] = get.getMe();
+		innerState2[numberSensors] = get.getMe();
 
 		String outAlways = get.getMe();
 		String outProceed = get.getMe(); 
@@ -103,7 +120,7 @@ public class DomXml {
 			vertId[temp1] = eElement1.getAttribute("xmi:id");
 			vertInco[temp1] = eElement1.getAttribute("incomingTransitions");
 			vertName[temp1] = eElement1.getAttribute("name");
-
+			System.out.println(vertId[temp1]);
 		}
 
 		System.out.println("Vertices");
@@ -141,16 +158,21 @@ public class DomXml {
 				String outTarget = eElement.getAttribute("target");
 				//get bottom state
 
-				for(int teVe = 0; teVe < vertId.length; teVe++) {
-					if (outTarget.equals(vertId[teVe])) {
-						bottomStateName = vertName[teVe];
-						bottomStateId = vertId[teVe];
-						belowNodeId = vertId[teVe + 1];
-						break;
-					}
+				for(int teVe = 0; teVe < vertId.length && (vertId[teVe] != null); teVe++) {
+					System.out.println(vertId[teVe]);
+					System.out.println(!vertId[teVe].equals(null));
+					if(!vertId[teVe].equals(null)) {
+						if (outTarget.equals(vertId[teVe])) {
+							bottomStateName = vertName[teVe];
+							bottomStateId = vertId[teVe];
+							belowNodeId = vertId[teVe + 1];
+							System.out.println(belowNodeId);
+							break;
+						}
 
-					if (topStateId.equals(vertId[teVe])) {
-						aboveNodeId = vertId[teVe-1];
+						if (topStateId.equals(vertId[teVe])) {
+							aboveNodeId = vertId[teVe-1];
+						}
 					}
 
 				}
@@ -170,14 +192,15 @@ public class DomXml {
 			System.out.println(belowNodeId);
 			System.out.println(eElement1);
 
-			if(belowNodeId.equals(eElement1.getAttribute("xmi:id"))) {
-				belowNode = nNode1;
-			}
+			if(eElement1 != null) {
+				if(belowNodeId.equals(eElement1.getAttribute("xmi:id"))) {
+					belowNode = nNode1;
+				}
 
-			if (aboveNodeId.equals(eElement1.getAttribute("xmi:id"))) {
-				aboveNode = nNode1;
+				if (aboveNodeId.equals(eElement1.getAttribute("xmi:id"))) {
+					aboveNode = nNode1;
+				}
 			}
-
 		//	vertId[temp1] = eElement1.getAttribute("xmi:id");
 		//	vertInco[temp1] = eElement1.getAttribute("incomingTransitions");
 		//	vertName[temp1] = eElement1.getAttribute("name");
@@ -211,9 +234,6 @@ public class DomXml {
 			}
 		}
 
-	//	System.out.println("random strings ahead");
-	//	System.out.println(get.getMe());
-	//	System.out.println(get.getMe());
 		NodeList nList2 = doc.getElementsByTagName("regions");
 		int tempLen2 = nList2.getLength();
 
@@ -226,16 +246,22 @@ public class DomXml {
 
 				//Create Sync vertices
 				getVertices sync1 = new getVertices(doc, "sgraph:Synchronization", sync1Id, outAboveState , ""); //later fill in incoming transition
+				
+				Node syncNode = sync1.returnNode();
 
 //				System.out.println(sync1.returnMe());
+				getOutTrans[] getOutArr = new getOutTrans[50];
+				for(int trTrans = 0; trTrans < numberSensors; trTrans++) {
+					getOutArr[trTrans] = new getOutTrans(doc, outSync1[trTrans], "", innerState1[trTrans]);
+					syncNode.appendChild(getOutArr[trTrans].returnMe());
+				}
 
-				getOutTrans outgoing1 = new getOutTrans(doc, outSync1[0], "", innerState1[0]); //later fill in target
-				getOutTrans outgoing2 = new getOutTrans(doc, outSync1[1], "", innerState1[1]);
+//				getOutTrans outgoing1 = new getOutTrans(doc, outSync1[0], "", innerState1[0]); //later fill in target
+//				getOutTrans outgoing2 = new getOutTrans(doc, outSync1[1], "", innerState1[1]);
 
 				//System.out.println(outgoing1.returnMe());
-				Node syncNode = sync1.returnNode();
-				syncNode.appendChild(outgoing1.returnMe());
-				syncNode.appendChild(outgoing2.returnMe());
+//				syncNode.appendChild(outgoing1.returnMe());
+//				syncNode.appendChild(outgoing2.returnMe());
 			
 				nNode2.appendChild(syncNode); 
 
@@ -248,7 +274,7 @@ public class DomXml {
 				/* flexible section */
 				// Can be as many numbe rof time as you want, depending on the number of AND sensors available
 				//region1 inside the region-vertice
-				getRegion reg1 = new getRegion(doc, get.getMe(), "r1");
+		/*		getRegion reg1 = new getRegion(doc, get.getMe(), "r1");
 
 				//Vertices & Transitions to append
 				getVertices reg1Vert1 = new getVertices(doc, "sgraph:State", innerState1[1], outSync2[0] , bottomStateName);//State0 //set incomingtransition
@@ -286,12 +312,40 @@ public class DomXml {
 				//Append to main vertice node
 				nodeRegVert.appendChild(nodeReg1); //First region appended to the vertice-region node
 				nodeRegVert.appendChild(nodeReg2); //First region appended to the vertice-region node
+*/
+				getRegion[] regMe = new getRegion[50];
+				Node[] nodeTempReg = new Node[50];
 
+				for (int tempRegNo = 0 ; tempRegNo < numberSensors; tempRegNo++) {
+					String tempRegName = "r" + tempRegNo;
+					regMe[tempRegNo] =  new getRegion(doc, get.getMe(), tempRegName);
+
+					//Vertices & Transitions to append
+					getVertices reg1Vert11 = new getVertices(doc, "sgraph:State", innerState2[tempRegNo], outSync2[tempRegNo], bottomStateName);//State0 //set incomingtransition
+					getOutTrans reg1Vert1Out11 = new getOutTrans(doc, outSync3[tempRegNo], "Person.end", sync2Id);//set target
+					Node vertNode11 = reg1Vert11.returnNode();
+					vertNode11.appendChild(reg1Vert1Out11.returnMe());
+
+					getVertices reg1Vert22 = new getVertices(doc, "sgraph:State", innerState1[tempRegNo], outSync1[tempRegNo], topStateName); //Idle
+					getOutTrans reg1Vert2Out22 = new getOutTrans(doc, outSync2[tempRegNo], "Person.event0", innerState2[tempRegNo]);
+					Node vertNode22 = reg1Vert22.returnNode();
+					vertNode22.appendChild(reg1Vert2Out22.returnMe());
+
+					nodeTempReg[tempRegNo] = regMe[tempRegNo].returnNode();
+					nodeTempReg[tempRegNo].appendChild(vertNode11);
+					nodeTempReg[tempRegNo].appendChild(vertNode22);
+				
+					nodeRegVert.appendChild(nodeTempReg[tempRegNo]);
+				}
 				nNode2.appendChild(nodeRegVert);
 				/* flexible section ends */
 
 				// The Sync End function State
-				String tempSync2Out = outSync3[0] + " " + outSync3[1];
+				String tempSync2Out = outSync3[0];
+				for(int tempOutNo = 1 ; tempOutNo < numberSensors; tempOutNo++) {
+					tempSync2Out =tempSync2Out + " " +outSync3[tempOutNo]; 
+				}
+			//	String tempSync2Out = outSync3[0] + " " + outSync3[1];
 				getVertices syncVert = new getVertices(doc, "sgraph:Synchronization", sync2Id, tempSync2Out, "");
 				Node syncNode1 = syncVert.returnNode();
 
