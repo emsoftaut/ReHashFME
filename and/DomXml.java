@@ -34,7 +34,7 @@ public class DomXml {
 		Document doc = docBuilder.parse(filepath);
 
 		// Number of sensors- 
-		int numberSensors = 3;
+		int numberSensors = 4;
 
 		// Get the root element
 		Node company = doc.getFirstChild();
