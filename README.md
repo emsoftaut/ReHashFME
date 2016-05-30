@@ -20,7 +20,8 @@ The code gets updated into file1.xml, which you can copy into any yakindu statec
 ```
 The code gets updated into file.xml, which you can copy into any yakindu statechart sct file and it will generate the statechart automatically for you
 
-How to run both AND and OR parser on the Statechart xml file?
+
+### How to run both AND and OR parser on the Statechart xml file?
 
 Run the AND parser first as it might generate more states
 Run the OR parser next, on the same file
