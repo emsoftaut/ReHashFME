@@ -28,7 +28,7 @@ public class DomXml {
 	public static void main(String argv[]) {
 
 	   try {
-		String filepath = "file1.xml";
+		String filepath = "file2.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
@@ -37,7 +37,8 @@ public class DomXml {
 		Node company = doc.getFirstChild();
 		String saveTarget = "test";
 		String saveStr = "test";
-		int nosens = 6; // Hard coding number of sensors.. tada
+		int nosens = 2; // Hard coding number of sensors.. tada
+		String theEvent = "Person.event0";
 		// Get the staff element , it may not working if tag has spaces, or
 		// whatever weird characters in front...it's better to use
 		// getElementsByTagName() to get it directly.
@@ -57,7 +58,7 @@ public class DomXml {
 		for(int temp = 0; temp < tempLen; temp++) {
 			Node nNode = nList.item(temp);
 			Element eElement = (Element) nNode;
-			if(("Person.event0").equals(eElement.getAttribute("specification"))) {
+			if((theEvent).equals(eElement.getAttribute("specification"))) {
 				System.out.println(eElement.getAttribute("specification"));
 				String target = eElement.getAttribute("target");
 				String speci = eElement.getAttribute("specification");

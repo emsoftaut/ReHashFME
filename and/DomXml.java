@@ -28,14 +28,15 @@ public class DomXml {
 
 
 	   try {
-		String filepath = "file.xml";
+		String filepath = "file2.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
 
 		// Number of sensors- 
 		int numberSensors = 4;
-
+		String eventName = "Person.event1";
+		String laterEventName = "Person.end";
 		// Get the root element
 		Node company = doc.getFirstChild();
 
@@ -144,7 +145,7 @@ public class DomXml {
 			** Set Person.event0 as default
 			** Capture some id's and name's here
 			**/
-			if(("Person.event0").equals(eElement.getAttribute("specification"))) { 
+			if((eventName).equals(eElement.getAttribute("specification"))) { 
 				Node parent1 = nNode.getParentNode();
 				Element parVert = (Element) parent1;
 				topStateName = parVert.getAttribute("name");
@@ -274,45 +275,7 @@ public class DomXml {
 				/* flexible section */
 				// Can be as many numbe rof time as you want, depending on the number of AND sensors available
 				//region1 inside the region-vertice
-		/*		getRegion reg1 = new getRegion(doc, get.getMe(), "r1");
-
-				//Vertices & Transitions to append
-				getVertices reg1Vert1 = new getVertices(doc, "sgraph:State", innerState1[1], outSync2[0] , bottomStateName);//State0 //set incomingtransition
-				getOutTrans reg1Vert1Out1 = new getOutTrans(doc, outSync3[0], "Person.end", sync2Id);//set target
-				Node vertNode1 = reg1Vert1.returnNode();
-				vertNode1.appendChild(reg1Vert1Out1.returnMe());
-
-				getVertices reg1Vert2 = new getVertices(doc, "sgraph:State", innerState1[0], outSync1[0], topStateName); //Idle
-				getOutTrans reg1Vert2Out2 = new getOutTrans(doc, outSync2[0], "Person.event0", innerState1[1]);
-				Node vertNode2 = reg1Vert2.returnNode();
-				vertNode2.appendChild(reg1Vert2Out2.returnMe());
-
-				Node nodeReg1 = reg1.returnNode();
-				nodeReg1.appendChild(vertNode1);
-				nodeReg1.appendChild(vertNode2);
-
-				//region2 inside the region-vertice
-				getRegion reg2 = new getRegion(doc, get.getMe(), "r2");
-
-				//Vertices & Transitions to append
-				getVertices reg1Vert11 = new getVertices(doc, "sgraph:State", innerState2[1], outSync2[1], bottomStateName);//State0 //set incomingtransition
-				getOutTrans reg1Vert1Out11 = new getOutTrans(doc, outSync3[1], "Person.end", sync2Id);//set target
-				Node vertNode11 = reg1Vert11.returnNode();
-				vertNode11.appendChild(reg1Vert1Out11.returnMe());
-
-				getVertices reg1Vert22 = new getVertices(doc, "sgraph:State", innerState2[0], outSync1[1], topStateName); //Idle
-				getOutTrans reg1Vert2Out22 = new getOutTrans(doc, outSync2[1], "Person.event0", innerState2[1]);
-				Node vertNode22 = reg1Vert22.returnNode();
-				vertNode22.appendChild(reg1Vert2Out22.returnMe());
-
-				Node nodeReg2 = reg2.returnNode();
-				nodeReg2.appendChild(vertNode11);
-				nodeReg2.appendChild(vertNode22);
-
-				//Append to main vertice node
-				nodeRegVert.appendChild(nodeReg1); //First region appended to the vertice-region node
-				nodeRegVert.appendChild(nodeReg2); //First region appended to the vertice-region node
-*/
+	
 				getRegion[] regMe = new getRegion[50];
 				Node[] nodeTempReg = new Node[50];
 
@@ -322,12 +285,12 @@ public class DomXml {
 
 					//Vertices & Transitions to append
 					getVertices reg1Vert11 = new getVertices(doc, "sgraph:State", innerState2[tempRegNo], outSync2[tempRegNo], bottomStateName);//State0 //set incomingtransition
-					getOutTrans reg1Vert1Out11 = new getOutTrans(doc, outSync3[tempRegNo], "Person.end", sync2Id);//set target
+					getOutTrans reg1Vert1Out11 = new getOutTrans(doc, outSync3[tempRegNo], laterEventName, sync2Id);//set target
 					Node vertNode11 = reg1Vert11.returnNode();
 					vertNode11.appendChild(reg1Vert1Out11.returnMe());
 
 					getVertices reg1Vert22 = new getVertices(doc, "sgraph:State", innerState1[tempRegNo], outSync1[tempRegNo], topStateName); //Idle
-					getOutTrans reg1Vert2Out22 = new getOutTrans(doc, outSync2[tempRegNo], "Person.event0", innerState2[tempRegNo]);
+					getOutTrans reg1Vert2Out22 = new getOutTrans(doc, outSync2[tempRegNo], eventName, innerState2[tempRegNo]);
 					Node vertNode22 = reg1Vert22.returnNode();
 					vertNode22.appendChild(reg1Vert2Out22.returnMe());
 
