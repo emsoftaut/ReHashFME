@@ -43,16 +43,20 @@ where you can re-define number of sensors and the event to listen to
 ## Rules for parsing
 Copy the Statechart .sct XML code into a new or existing 'source files/<newfile.xml>' file
 <br>
-Check the code to see if the States & Transitions in the XML file are called in the order in which they occur in the actual design and the regions <regions xmi:id="<the_id>" name="main region"> containing the code to be translated should always be named as "main region"
+Check the code to see if the States & Transitions in the XML file are called in the order in which they occur in the actual design and the regions 
+```
+<regions xmi:id="<the_id>" name="main region"> 
+```
+containing the code to be translated should always be named as "main region"
 For example:
 Under regions, the Chart should always start with the 'sgraph:Entry' vertice;
 <br>
 
-
-/<vertices xsi:type="sgraph:Entry" xmi:id="<the_id>">
+```
+<vertices xsi:type="sgraph:Entry" xmi:id="<the_id>">
         <outgoingTransitions xmi:id="<the_id>" target="<target>"/>
- </vertices>
-
+</vertices>
+```
 and
 
 The Chart should always exit as 
@@ -65,14 +69,14 @@ First run the code through the AND parser under folder and using the java compil
 Remember to specify the "<file name>.xml" "<number of sensors>" and the "<start AND transition>" and "<following to AND transition>" in the and/DomXml.java. So it should look something like
 
 ```
-  String filepath = "<file name>.xml";
-	....
-    	...
-		// Number of sensors- 
-		int numberSensors = "<number of sensors>";
-		String eventName = "<start AND transition>";
-		String laterEventName = "<following to AND transition>";
-		// Get the root element
+String filepath = "<file name>.xml";
+....
+...
+// Number of sensors- 
+int numberSensors = "<number of sensors>";
+String eventName = "<start AND transition>";
+String laterEventName = "<following to AND transition>";
+// Get the root element
 ```
 <br>
 Take the resulted code from "<file name>.xml" and copy it into a new or existing XML file under or/source files/<file name>.xml
@@ -83,12 +87,12 @@ Remember to specify the "<file name>.xml" "<number of sensors>" and the "<OR tra
 <br>
 ```
 String filepath = "<file name>.xml";
-	...
-	...
-	
-	...
-	int nosens = "<number of sensors>"; // Hard coding number of sensors.. tada
-	String theEvent = "<number of sensors>";
+...
+...
+
+...
+int nosens = "<number of sensors>"; // Hard coding number of sensors.. tada
+String theEvent = "<number of sensors>";
 ```
 <br>
 Take the code from <file name>.xml and run it as project in [Yakindu](https://github.com/Yakindu/statecharts) to display the resultant Statechart
