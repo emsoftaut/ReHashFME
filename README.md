@@ -3,7 +3,7 @@ A Code translator that lets you convert Parametric Statecharts to Static Statech
 
 We used to [Yakindu Statecharts](https://github.com/Yakindu/statecharts) to design & display Statecharts
 
-So, After passing 
+So, After parsing, <br> 
 This
 
 ![alt tag](https://raw.githubusercontent.com/emsoftaut/ReHashFME/master/case-study/PSCboxed.png)
