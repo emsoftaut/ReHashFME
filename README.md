@@ -48,11 +48,11 @@ For example:
 Under regions, the Chart should always start with the 'sgraph:Entry' vertice;
 <br>
 
-```
-<vertices xsi:type="sgraph:Entry" xmi:id="_8ikQ4SbBEea737LWuReUSw">
-        <outgoingTransitions xmi:id="_8ilfACbBEea737LWuReUSw" target="_8ikQ7SbBEea737LWuReUSw"/>
-</vertices>
-```
+
+/<vertices xsi:type="sgraph:Entry" xmi:id="<the_id>">
+        <outgoingTransitions xmi:id="<the_id>" target="<target>"/>
+ </vertices>
+
 and
 
 The Chart should always exit as 
