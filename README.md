@@ -6,11 +6,11 @@ We used to [Yakindu Statecharts](https://github.com/Yakindu/statecharts) to desi
 So, After passing 
 This
 
-![alt tag](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt tag](https://raw.githubusercontent.com/emsoftaut/ReHashFME/master/case-study/PSCboxed.png)
 
 gets converted to this 
 
-![alt tag](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt tag](https://raw.githubusercontent.com/emsoftaut/ReHashFME/master/case-study/PSCNew.png)
 
 ## OR case
 
