@@ -28,7 +28,8 @@ public class DomXml {
 	public static void main(String argv[]) {
 
 	   try {
-		String filepath = "file2.xml";
+	   	long startTime = System.currentTimeMillis(); // Used to measure execution time later	
+		String filepath = "file4.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
@@ -37,8 +38,8 @@ public class DomXml {
 		Node company = doc.getFirstChild();
 		String saveTarget = "test";
 		String saveStr = "test";
-		int nosens = 2; // Hard coding number of sensors.. tada
-		String theEvent = "Person.event0";
+		int nosens = 3; // Hard coding number of sensors.. tada
+		String theEvent = "Person.inPresence_OR_LogPos";
 		// Get the staff element , it may not working if tag has spaces, or
 		// whatever weird characters in front...it's better to use
 		// getElementsByTagName() to get it directly.
@@ -149,6 +150,9 @@ public class DomXml {
 		transformer.transform(source, result);
 
 		System.out.println("Done");
+		long endTime   = System.currentTimeMillis();
+		System.out.println("Execution time");
+		System.out.println(endTime - startTime);
 
 	   } catch (ParserConfigurationException pce) {
 		pce.printStackTrace();

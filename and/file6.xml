@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><xmi:XMI xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <sgraph:Statechart name="NewPlan6" specification="interface Person:&#10;&#9;in event connect&#10;&#9;in event temperatureOR&#10;&#9;in event detectInsulin&#10;&#9;in event insulinAND&#10;&#9;in event insulinLevel&#10;&#9;var insulin : integer&#10;&#9;in event report&#10;&#9;&#10;internal:&#10;&#9;event always&#10;&#9;event proceed" xmi:id="_8iibsCbBEea737LWuReUSw">
+    <regions name="main region" xmi:id="_8ijp0ibBEea737LWuReUSw">
+      <vertices xmi:id="_8ikQ4SbBEea737LWuReUSw" xsi:type="sgraph:Entry">
+        <outgoingTransitions target="_8ikQ7SbBEea737LWuReUSw" xmi:id="_8ilfACbBEea737LWuReUSw"/>
+      </vertices>
+      <vertices incomingTransitions="_8ilfACbBEea737LWuReUSw _tktVACbCEea737LWuReUSw" name="Idle" xmi:id="_8ikQ7SbBEea737LWuReUSw" xsi:type="sgraph:State">
+        <outgoingTransitions specification="Person.connect" target="_PNe34CbCEea737LWuReUSw" xmi:id="_QAKSACbCEea737LWuReUSw"/>
+      </vertices>
+      <vertices incomingTransitions="_QAKSACbCEea737LWuReUSw" name="Connected" xmi:id="_PNe34CbCEea737LWuReUSw" xsi:type="sgraph:State">
+        <outgoingTransitions specification="Person.temperatureOR" target="_XWjQwCbCEea737LWuReUSw" xmi:id="_aLO-4CbCEea737LWuReUSw"/>
+      </vertices>
+      <vertices incomingTransitions="_aLO-4CbCEea737LWuReUSw" name="Body temperature measured" xmi:id="_XWjQwCbCEea737LWuReUSw" xsi:type="sgraph:State">
+        <outgoingTransitions specification="Person.detectInsulin" target="_567022a5-9b80-4ebb-b4f" xmi:id="_c1a236cf-e832-43e9-bee"/>
+      </vertices>
+      
+      
+      <vertices incomingTransitions="_b30a5203-e990-40a2-855" xmi:id="_qhVDkCbCEea737LWuReUSw" xsi:type="sgraph:Choice">
+        <outgoingTransitions specification="" target="_8ikQ7SbBEea737LWuReUSw" xmi:id="_tktVACbCEea737LWuReUSw"/>
+        <outgoingTransitions specification="[Person.insulin &gt; 25]" target="_uUTl8CbCEea737LWuReUSw" xmi:id="_wgctYCbCEea737LWuReUSw"/>
+      </vertices>
+      <vertices incomingTransitions="_wgctYCbCEea737LWuReUSw" name="Take Medicine" xmi:id="_uUTl8CbCEea737LWuReUSw" xsi:type="sgraph:State">
+        <outgoingTransitions specification="Person.report" target="_tE8P0CbCEea737LWuReUSw" xmi:id="_y9hMwCbCEea737LWuReUSw"/>
+      </vertices>
+      <vertices incomingTransitions="_y9hMwCbCEea737LWuReUSw" xmi:id="_tE8P0CbCEea737LWuReUSw" xsi:type="sgraph:FinalState"/>
+    <vertices incomingTransitions="_c1a236cf-e832-43e9-bee" name="" xmi:id="_567022a5-9b80-4ebb-b4f" xsi:type="sgraph:Synchronization"><outgoingTransitions specification="" target="_a8488658-aed1-4752-902" xmi:id="_5a8ed1ec-fc28-4a24-acd"/><outgoingTransitions specification="" target="_d9e4c828-4e79-4abc-970" xmi:id="_33bc161f-0476-458f-be8"/><outgoingTransitions specification="" target="_db8fe921-2373-485a-b78" xmi:id="_01ab2a01-2f92-479f-92c"/></vertices><vertices incomingTransitions="" name="Sensors" xmi:id="_0a9158f5-22cb-435e-853" xsi:type="sgraph:State"><regions name="r0" xmi:id="_b63a8836-0d34-463e-94a"><vertices incomingTransitions="_06cb80cd-91f8-48f9-b67" name="Measure Insulin" xmi:id="_c7b008af-96d5-4e14-bd8" xsi:type="sgraph:State"><outgoingTransitions specification="Person.insulinLevel" target="_736714b1-6555-4476-ac3" xmi:id="_071d91c5-b1ae-4aba-b60"/></vertices><vertices incomingTransitions="_5a8ed1ec-fc28-4a24-acd" name="Check Insulin" xmi:id="_a8488658-aed1-4752-902" xsi:type="sgraph:State"><outgoingTransitions specification="Person.insulinAND" target="_c7b008af-96d5-4e14-bd8" xmi:id="_06cb80cd-91f8-48f9-b67"/></vertices></regions><regions name="r1" xmi:id="_3e25fdde-09c2-488b-8c9"><vertices incomingTransitions="_f2500050-73b7-4c43-836" name="Measure Insulin" xmi:id="_7c46f44b-3493-4b31-941" xsi:type="sgraph:State"><outgoingTransitions specification="Person.insulinLevel" target="_736714b1-6555-4476-ac3" xmi:id="_4cbb0e23-0e39-4757-842"/></vertices><vertices incomingTransitions="_33bc161f-0476-458f-be8" name="Check Insulin" xmi:id="_d9e4c828-4e79-4abc-970" xsi:type="sgraph:State"><outgoingTransitions specification="Person.insulinAND" target="_7c46f44b-3493-4b31-941" xmi:id="_f2500050-73b7-4c43-836"/></vertices></regions><regions name="r2" xmi:id="_58b3e220-71c8-4f1a-822"><vertices incomingTransitions="_4856c5e4-c334-4a20-82a" name="Measure Insulin" xmi:id="_589c98ae-1ce3-4f90-972" xsi:type="sgraph:State"><outgoingTransitions specification="Person.insulinLevel" target="_736714b1-6555-4476-ac3" xmi:id="_dff90d78-e98e-4875-af6"/></vertices><vertices incomingTransitions="_01ab2a01-2f92-479f-92c" name="Check Insulin" xmi:id="_db8fe921-2373-485a-b78" xsi:type="sgraph:State"><outgoingTransitions specification="Person.insulinAND" target="_589c98ae-1ce3-4f90-972" xmi:id="_4856c5e4-c334-4a20-82a"/></vertices></regions></vertices><vertices incomingTransitions="_071d91c5-b1ae-4aba-b60 _4cbb0e23-0e39-4757-842 _dff90d78-e98e-4875-af6" name="" xmi:id="_736714b1-6555-4476-ac3" xsi:type="sgraph:Synchronization"><outgoingTransitions specification="proceed" target="_298c683c-a6fc-4cbb-8b8" xmi:id="_018e79d8-c73b-4497-80e"/></vertices><vertices incomingTransitions="_018e79d8-c73b-4497-80e" name="aggregate" xmi:id="_298c683c-a6fc-4cbb-8b8" xsi:type="sgraph:State"><outgoingTransitions specification="always" target="_qhVDkCbCEea737LWuReUSw" xmi:id="_b30a5203-e990-40a2-855"/></vertices></regions>
+  </sgraph:Statechart>
+  
+<notation:Diagram element="_8iibsCbBEea737LWuReUSw" measurementUnit="Pixel" type="org.yakindu.sct.ui.editor.editor.StatechartDiagramEditor" xmi:id="_8ijp0CbBEea737LWuReUSw"/></xmi:XMI>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><xmi:XMI xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" incomingTransitions="_4c541ee8-6418-48bb-92d" target="_0b45bb48-ea58-4d99-bf3" xmi:id="_d9f58769-d087-4d41-96d" xmi:version="2.0">
+  <sgraph:Statechart name="NewPlan5" specification="interface Person:&#10;&#9;out event connect&#10;&#9;in event awake&#10;&#9;out event sleeping&#10;&#9;in event sleep&#10;&#9;in event inPresence_OR_LogPos&#10;&#9;in event userPresent&#10;&#9;in event measureAltitude&#10;&#9;in event detectFall&#10;&#9;out event report&#10;&#9;in event checkStatus&#10;&#9;var altitude : integer&#10;&#9;in event inAltitude_AND_conjuction&#10;&#9;&#10;internal:&#10;&#9;event always&#10;&#9;event proceed&#10;&#9;&#10;&#9;" xmi:id="_eDR9kCa5EeabZbg930qxPg">
+    <regions name="Rehabilitation" xmi:id="_eDUZ0Ca5EeabZbg930qxPg">
+      <vertices xmi:id="_eDZ5YSa5EeabZbg930qxPg" xsi:type="sgraph:Entry">
+        <outgoingTransitions target="_eDbukSa5EeabZbg930qxPg" xmi:id="_eDdjwSa5EeabZbg930qxPg"/>
+      </vertices>
+      <vertices incomingTransitions="_eDdjwSa5EeabZbg930qxPg" name="Init" xmi:id="_eDbukSa5EeabZbg930qxPg" xsi:type="sgraph:State">
+        <outgoingTransitions specification="Person.connect" target="_dspJwCa6EeabZbg930qxPg" xmi:id="_efVyACa6EeabZbg930qxPg"/>
+      </vertices>
+      <vertices incomingTransitions="_efVyACa6EeabZbg930qxPg" name="Connected" xmi:id="_dspJwCa6EeabZbg930qxPg" xsi:type="sgraph:State">
+        <outgoingTransitions specification="Person.sleeping" target="_rkH28Ca6EeabZbg930qxPg" xmi:id="_t2RfwCa6EeabZbg930qxPg"/>
+      </vertices>
+      <vertices incomingTransitions="_t2RfwCa6EeabZbg930qxPg _Tb8rICa8EeabZbg930qxPg" name="Idle" xmi:id="_rkH28Ca6EeabZbg930qxPg" xsi:type="sgraph:State">
+        <outgoingTransitions specification="Person.sleep" target="_dbQCUCa7EeabZbg930qxPg" xmi:id="_M2ezACa8EeabZbg930qxPg"/>
+      </vertices>
+      <vertices incomingTransitions="_M2ezACa8EeabZbg930qxPg" name="Awake" xmi:id="_dbQCUCa7EeabZbg930qxPg" xsi:type="sgraph:State">
+        <outgoingTransitions specification="Person.awake" target="_rkH28Ca6EeabZbg930qxPg" xmi:id="_Tb8rICa8EeabZbg930qxPg"/>
+        <regions name="main region" xmi:id="_fxm1sCa7EeabZbg930qxPg">
+          <vertices incomingTransitions="_ZG1xYCa8EeabZbg930qxPg _DjV-QCa9EeabZbg930qxPg _KUfsgCa-Eea737LWuReUSw" name="Monitor" xmi:id="_JLquICa8EeabZbg930qxPg" xsi:type="sgraph:State">
+            <outgoingTransitions specification="after 200 s" target="_JLquICa8EeabZbg930qxPg" xmi:id="_DjV-QCa9EeabZbg930qxPg"/>
+            <outgoingTransitions specification="Person.inPresence_OR_LogPos" target="_ok2-kCa8EeabZbg930qxPg" xmi:id="_RN6Q0Ca9EeabZbg930qxPg"/>
+          </vertices>
+          <vertices xmi:id="_Ycyu0Ca8EeabZbg930qxPg" xsi:type="sgraph:Entry">
+            <outgoingTransitions specification="" target="_JLquICa8EeabZbg930qxPg" xmi:id="_ZG1xYCa8EeabZbg930qxPg"/>
+          </vertices>
+          <vertices incomingTransitions="_GpDVgCa-Eea737LWuReUSw" name="Alert" xmi:id="_iWBdwCa8EeabZbg930qxPg" xsi:type="sgraph:State">
+            <outgoingTransitions specification="Person.report" target="_62XKkCa9Eea737LWuReUSw" xmi:id="_7aaS0Ca9Eea737LWuReUSw"/>
+          </vertices>
+          <vertices incomingTransitions="_RN6Q0Ca9EeabZbg930qxPg" name="Find location" xmi:id="_ok2-kCa8EeabZbg930qxPg" xsi:type="sgraph:State">
+            <outgoingTransitions specification="Person.detectFall" target="_rbX4sCa8EeabZbg930qxPg" xmi:id="_wOplACa9Eea737LWuReUSw"/>
+          </vertices>
+          <vertices incomingTransitions="_wOplACa9Eea737LWuReUSw" name="Check for falls" xmi:id="_rbX4sCa8EeabZbg930qxPg" xsi:type="sgraph:State">
+            <outgoingTransitions specification="Person.inAltitude_AND_conjuction" target="_tTG2YCa8EeabZbg930qxPg" xmi:id="_0WQ6oCa9Eea737LWuReUSw"/>
+          </vertices>
+          <vertices incomingTransitions="_0WQ6oCa9Eea737LWuReUSw" name="Check Altitude" xmi:id="_tTG2YCa8EeabZbg930qxPg" xsi:type="sgraph:State">
+            <outgoingTransitions specification="Person.checkStatus" target="_Fb0GUCa-Eea737LWuReUSw" xmi:id="_LXUbcCa-Eea737LWuReUSw"/>
+          </vertices>
+          <vertices incomingTransitions="_LXUbcCa-Eea737LWuReUSw" xmi:id="_Fb0GUCa-Eea737LWuReUSw" xsi:type="sgraph:Choice">
+            <outgoingTransitions specification="[Person.altitude &gt; 5]" target="_iWBdwCa8EeabZbg930qxPg" xmi:id="_GpDVgCa-Eea737LWuReUSw"/>
+            <outgoingTransitions specification="" target="_JLquICa8EeabZbg930qxPg" xmi:id="_KUfsgCa-Eea737LWuReUSw"/>
+          </vertices>
+          <vertices incomingTransitions="_7aaS0Ca9Eea737LWuReUSw" xmi:id="_62XKkCa9Eea737LWuReUSw" xsi:type="sgraph:FinalState"/>
+        <vertices incomingTransitions="_d9f58769-d087-4d41-96d" name="" xmi:id="_0b45bb48-ea58-4d99-bf3" xsi:type="sgraph:Synchronization"><outgoingTransitions specification="" target="_0cd5eed9-780a-44cf-8dd" xmi:id="_df02c710-8075-4738-97a"/><outgoingTransitions specification="" target="_270489a6-9b42-4bc6-a7a" xmi:id="_72b94237-9572-40a1-8c9"/></vertices><vertices incomingTransitions="" name="Sensors" xmi:id="_fd9eef1c-95d6-455e-89c" xsi:type="sgraph:State"><regions name="r0" xmi:id="_530295a0-e75d-4bb6-ae0"><vertices incomingTransitions="_1fbff332-98be-4ac9-97c" name="init" xmi:id="_c141f0c4-92ee-4954-856" xsi:type="sgraph:State"><outgoingTransitions specification="Person.insulinLevel" target="_dd6da335-ae0f-46de-a5a" xmi:id="_18bb89a5-1d12-4c78-889"/></vertices><vertices incomingTransitions="_df02c710-8075-4738-97a" name="init" xmi:id="_0cd5eed9-780a-44cf-8dd" xsi:type="sgraph:State"><outgoingTransitions specification="Person.insulinAND" target="_c141f0c4-92ee-4954-856" xmi:id="_1fbff332-98be-4ac9-97c"/></vertices></regions><regions name="r1" xmi:id="_2361e704-78ae-4352-a00"><vertices incomingTransitions="_003e4a5d-99fa-4a45-a30" name="init" xmi:id="_8c4b842b-a59c-4941-9f5" xsi:type="sgraph:State"><outgoingTransitions specification="Person.insulinLevel" target="_dd6da335-ae0f-46de-a5a" xmi:id="_f37b0611-7ea8-4544-b7f"/></vertices><vertices incomingTransitions="_72b94237-9572-40a1-8c9" name="init" xmi:id="_270489a6-9b42-4bc6-a7a" xsi:type="sgraph:State"><outgoingTransitions specification="Person.insulinAND" target="_8c4b842b-a59c-4941-9f5" xmi:id="_003e4a5d-99fa-4a45-a30"/></vertices></regions></vertices><vertices incomingTransitions="_18bb89a5-1d12-4c78-889 _f37b0611-7ea8-4544-b7f" name="" xmi:id="_dd6da335-ae0f-46de-a5a" xsi:type="sgraph:Synchronization"><outgoingTransitions specification="proceed" target="_44c83cd4-bdc6-49bb-b32" xmi:id="_eab5b392-3376-4d79-92f"/></vertices><vertices incomingTransitions="_eab5b392-3376-4d79-92f" name="aggregate" xmi:id="_44c83cd4-bdc6-49bb-b32" xsi:type="sgraph:State"><outgoingTransitions specification="always" target="init" xmi:id="_4c541ee8-6418-48bb-92d"/></vertices></regions>
+      </vertices>
+    </regions>
+  </sgraph:Statechart>
+  
+<notation:Diagram element="_eDR9kCa5EeabZbg930qxPg" measurementUnit="Pixel" type="org.yakindu.sct.ui.editor.editor.StatechartDiagramEditor" xmi:id="_eDTywCa5EeabZbg930qxPg"/></xmi:XMI>

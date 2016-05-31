@@ -27,16 +27,18 @@ public class DomXml {
 	public static void main(String argv[]) {
 
 
-	   try {
-		String filepath = "file2.xml";
+	   try { 
+	   	long startTime = System.currentTimeMillis(); // Used to measure execution time later
+
+		String filepath = "file3.xml";
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 		Document doc = docBuilder.parse(filepath);
 
 		// Number of sensors- 
-		int numberSensors = 4;
-		String eventName = "Person.event1";
-		String laterEventName = "Person.end";
+		int numberSensors = 2;
+		String eventName = "Person.inInsulin_AND_Average";
+		String laterEventName = "Person.checkInsulin";
 		// Get the root element
 		Node company = doc.getFirstChild();
 
@@ -152,8 +154,9 @@ public class DomXml {
 				topStateId = parVert.getAttribute("xmi:id");
 
 				transAbove = nList.item(temp-1);
+				Element transElemn = (Element) transAbove;
 				System.out.println("the transitions node=");
-				System.out.println(transAbove);
+				System.out.println(transElemn.getAttribute("xmi:id"));
 
 				//Should destroy the node now? or later usign the loop
 				String outTarget = eElement.getAttribute("target");
@@ -248,6 +251,9 @@ public class DomXml {
 				//Create Sync vertices
 				getVertices sync1 = new getVertices(doc, "sgraph:Synchronization", sync1Id, outAboveState , ""); //later fill in incoming transition
 				
+				System.out.println("outAboveState");
+				System.out.println(outAboveState);
+
 				Node syncNode = sync1.returnNode();
 
 //				System.out.println(sync1.returnMe());
@@ -335,7 +341,9 @@ public class DomXml {
 		aboveTransNodeElem.setAttribute("target", sync1Id);
 		aboveTransNodeElem.setAttribute("xmi:id", outAboveState);
 		belowNodeElem.setAttribute("incomingTransitions", outAlways);
-
+		System.out.println("end in");
+		System.out.println(aboveTransNodeElem.getAttribute("target"));
+		System.out.println(aboveTransNodeElem.getAttribute("xmi:id"));
 		//Remove all notation-children nodes- Are regeneragted later & remove, re-add notation:diagram -> the simpler action
 		NodeList nList3 = doc.getElementsByTagName("notation:Diagram");
 		int tempLen3 = nList3.getLength();
@@ -385,7 +393,9 @@ public class DomXml {
 		transformer.transform(source, result);
 		
 		System.out.println("Done");
-
+		long endTime   = System.currentTimeMillis();
+		System.out.println("Execution time");
+		System.out.println(endTime - startTime);
 	   } catch (ParserConfigurationException pce) {
 		pce.printStackTrace();
 	   } 
@@ -397,6 +407,7 @@ public class DomXml {
 	   } catch (SAXException sae) {
 		sae.printStackTrace();
 	   }
+
 	}
 
 	private static class getRandom
