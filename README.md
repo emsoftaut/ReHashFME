@@ -66,7 +66,7 @@ The Chart should always exit as
 <br>
 First run the code through the AND parser under folder and using the java compiler as shown above
 <br>
-Remember to specify the "<file name>.xml" "<number of sensors>" and the "<start AND transition>" and "<following to AND transition>" in the and/DomXml.java. So it should look something like
+Remember to specify the "\<file name\>.xml" "\<number of sensors\>" and the "\<start AND transition\>" and "\<following to AND transition\>" in the and/DomXml.java. So it should look something like
 
 ```
 String filepath = "<file name>.xml";
@@ -79,11 +79,11 @@ String laterEventName = "<following to AND transition>";
 // Get the root element
 ```
 <br>
-Take the resulted code from "<file name>.xml" and copy it into a new or existing XML file under or/source files/<file name>.xml
+Take the resulted code from "\<file name\>.xml" and copy it into a new or existing XML file under or/source files/<file name\>.xml
 <br>
 Run the or/DomXml.java parser on the above file
 <br>
-Remember to specify the "<file name>.xml" "<number of sensors>" and the "<OR transition name>" in the or/DomXml.java. So it should look something like
+Remember to specify the "\<file name\>.xml" "<number of sensors>" and the "\<OR transition name\>" in the or/DomXml.java. So it should look something like
 <br>
 ```
 String filepath = "<file name>.xml";
@@ -92,10 +92,10 @@ String filepath = "<file name>.xml";
 
 ...
 int nosens = "<number of sensors>"; // Hard coding number of sensors.. tada
-String theEvent = "<number of sensors>";
+String theEvent = "<OR transition name>";
 ```
 <br>
-Take the code from <file name>.xml and run it as project in [Yakindu](https://github.com/Yakindu/statecharts) to display the resultant Statechart
+Take the code from \<file name\>.xml and run it as project in [Yakindu](https://github.com/Yakindu/statecharts) to display the resultant Statechart
 <br>
 Thanks for your time! and Congratulations! you have succesfully translated a Parametric Statechart to Static Statechart. You must be Amazing!
 <br>
