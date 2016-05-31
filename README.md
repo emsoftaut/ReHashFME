@@ -80,5 +80,5 @@ String filepath = "<file name>.xml";
 		String theEvent = "<number of sensors>";
 ```
 
-* Take the code from <file name>.xml and run it as project in (Yakindu)[https://github.com/Yakindu/statecharts] to display the resultant Statechart
-* Thanks for your time! adn Congratulations! you have succesfully translated a Parametric Statechart to Static Statechart. You are hell of a man!
+* Take the code from <file name>.xml and run it as project in [Yakindu](https://github.com/Yakindu/statecharts) to display the resultant Statechart
+* Thanks for your time! adn Congratulations! you have succesfully translated a Parametric Statechart to Static Statechart. You must be Amazing!
