@@ -1,6 +1,16 @@
 # RehAsh
 A Code translator that lets you convert Parametric Statecharts to Static Statecharts, for Statecharts used to design Rehabilitation plans
 
+We used to [Yakindu Statecharts](https://github.com/Yakindu/statecharts) to design & display Statecharts
+
+So, After passing 
+This
+
+![alt tag](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+
+gets converted to this 
+
+![alt tag](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
 
 ## OR case
 
@@ -29,3 +39,46 @@ Run the OR parser next, on the same file
 
 There are config variables defined on the top of both DomXml files
 where you can re-define number of sensors and the event to listen to
+
+## Rules for parsing
+* Copy the Statechart .sct XML code into a new or existing 'source files/<newfile.xml> file
+* Check the code to see if the States & Transitions in the XML file are called in the order in which they occur in the actual design and the regions <regions xmi:id="<the_id>" name="main region"> containing the code to be translated should always be named as "main region"
+```
+For example:
+** Under regions, the Chart should always start with the 'sgraph:Entry' vertice
+<vertices xsi:type="sgraph:Entry" xmi:id="_8ikQ4SbBEea737LWuReUSw">
+        <outgoingTransitions xmi:id="_8ilfACbBEea737LWuReUSw" target="_8ikQ7SbBEea737LWuReUSw"/>
+</vertices>
+
+and
+
+The Chart should always exit as 
+<vertices xsi:type="sgraph:FinalState" xmi:id="<the_id>" incomingTransitions="<incoming_transition(s)"/>
+```
+* First run the code through the AND parser under folder and using the java compiler as shown above
+* Remember to specify the "<file name>.xml" "<number of sensors>" and the "<start AND transition>" and "<following to AND transition>" in the and/DomXml.java. So it should look something like
+```
+  String filepath = "<file name>.xml";
+		....
+    ...
+		// Number of sensors- 
+		int numberSensors = "<number of sensors>";
+		String eventName = "<start AND transition>";
+		String laterEventName = "<following to AND transition>";
+		// Get the root element
+```
+* Take the resulted code from "<file name>.xml" and copy it into a new or existing XML file under or/source files/<file name>.xml
+* Run the or/DomXml.java parser on the above file
+* Remember to specify the "<file name>.xml" "<number of sensors>" and the "<OR transition name>" in the or/DomXml.java. So it should look something like
+```
+String filepath = "<file name>.xml";
+	...
+	...
+	
+	...
+		int nosens = "<number of sensors>"; // Hard coding number of sensors.. tada
+		String theEvent = "<number of sensors>";
+```
+
+* Take the code from <file name>.xml and run it as project in (Yakindu)[https://github.com/Yakindu/statecharts] to display the resultant Statechart
+* Thanks for your time! adn Congratulations! you have succesfully translated a Parametric Statechart to Static Statechart. You are hell of a man!
