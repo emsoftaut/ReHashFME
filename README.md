@@ -98,5 +98,4 @@ String theEvent = "<OR transition name>";
 Take the code from \<file name\>.xml and run it as project in [Yakindu](https://github.com/Yakindu/statecharts) to display the resultant Statechart
 <br>
 
-© Copyright [emsoftaut](https://github.com/emsoftaut) 2016
 
