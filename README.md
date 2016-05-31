@@ -83,7 +83,7 @@ Take the resulted code from "\<file name\>.xml" and copy it into a new or existi
 <br>
 Run the or/DomXml.java parser on the above file
 <br>
-Remember to specify the "\<file name\>.xml" "<number of sensors>" and the "\<OR transition name\>" in the or/DomXml.java. So it should look something like
+Remember to specify the "\<file name\>.xml" "\<number of sensors\>" and the "\<OR transition name\>" in the or/DomXml.java. So it should look something like
 <br>
 ```
 String filepath = "<file name>.xml";
