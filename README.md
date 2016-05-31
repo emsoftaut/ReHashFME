@@ -1,5 +1,6 @@
 # RehAsh
-Ash's work on Rehabilitation Plans
+A Code translator that lets you convert Parametric Statecharts to Static Statecharts, for Statecharts used to design Rehabilitation plans
+
 
 ## OR case
 
