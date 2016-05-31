@@ -19,7 +19,7 @@ gets converted to this
 > javac DomXml.java
 > java DomXml
 ```
-The code gets updated into file1.xml, which you can copy into any yakindu statechart sct file and it will generate the statechart automatically for you
+The code gets updated into "or/source files/<file name>.xml", which you can copy into any yakindu statechart sct file and it will generate the statechart automatically for you
 
 ## AND case
 
@@ -29,7 +29,7 @@ The code gets updated into file1.xml, which you can copy into any yakindu statec
 > javac DomXml.java
 > java DomXml
 ```
-The code gets updated into file.xml, which you can copy into any yakindu statechart sct file and it will generate the statechart automatically for you
+The code gets updated into "and/source files/<file name>.xml", which you can copy into any yakindu statechart sct file and it will generate the statechart automatically for you
 
 
 ### How to run both AND and OR parser on the Statechart xml file?
@@ -41,8 +41,9 @@ There are config variables defined on the top of both DomXml files
 where you can re-define number of sensors and the event to listen to
 
 ## Rules for parsing
-* Copy the Statechart .sct XML code into a new or existing 'source files/<newfile.xml> file
-* Check the code to see if the States & Transitions in the XML file are called in the order in which they occur in the actual design and the regions <regions xmi:id="<the_id>" name="main region"> containing the code to be translated should always be named as "main region"
+Copy the Statechart .sct XML code into a new or existing 'source files/<newfile.xml>' file
+<br>
+Check the code to see if the States & Transitions in the XML file are called in the order in which they occur in the actual design and the regions <regions xmi:id="<the_id>" name="main region"> containing the code to be translated should always be named as "main region"
 ```
 For example:
 ** Under regions, the Chart should always start with the 'sgraph:Entry' vertice
@@ -55,30 +56,39 @@ and
 The Chart should always exit as 
 <vertices xsi:type="sgraph:FinalState" xmi:id="<the_id>" incomingTransitions="<incoming_transition(s)"/>
 ```
-* First run the code through the AND parser under folder and using the java compiler as shown above
-* Remember to specify the "<file name>.xml" "<number of sensors>" and the "<start AND transition>" and "<following to AND transition>" in the and/DomXml.java. So it should look something like
+<br>
+First run the code through the AND parser under folder and using the java compiler as shown above
+<br>
+Remember to specify the "<file name>.xml" "<number of sensors>" and the "<start AND transition>" and "<following to AND transition>" in the and/DomXml.java. So it should look something like
+
 ```
   String filepath = "<file name>.xml";
-		....
-    ...
+	....
+    	...
 		// Number of sensors- 
 		int numberSensors = "<number of sensors>";
 		String eventName = "<start AND transition>";
 		String laterEventName = "<following to AND transition>";
 		// Get the root element
 ```
-* Take the resulted code from "<file name>.xml" and copy it into a new or existing XML file under or/source files/<file name>.xml
-* Run the or/DomXml.java parser on the above file
-* Remember to specify the "<file name>.xml" "<number of sensors>" and the "<OR transition name>" in the or/DomXml.java. So it should look something like
+<br>
+Take the resulted code from "<file name>.xml" and copy it into a new or existing XML file under or/source files/<file name>.xml
+<br>
+Run the or/DomXml.java parser on the above file
+<br>
+Remember to specify the "<file name>.xml" "<number of sensors>" and the "<OR transition name>" in the or/DomXml.java. So it should look something like
+<br>
 ```
 String filepath = "<file name>.xml";
 	...
 	...
 	
 	...
-		int nosens = "<number of sensors>"; // Hard coding number of sensors.. tada
-		String theEvent = "<number of sensors>";
+	int nosens = "<number of sensors>"; // Hard coding number of sensors.. tada
+	String theEvent = "<number of sensors>";
 ```
-
-* Take the code from <file name>.xml and run it as project in [Yakindu](https://github.com/Yakindu/statecharts) to display the resultant Statechart
-* Thanks for your time! adn Congratulations! you have succesfully translated a Parametric Statechart to Static Statechart. You must be Amazing!
+<br>
+Take the code from <file name>.xml and run it as project in [Yakindu](https://github.com/Yakindu/statecharts) to display the resultant Statechart
+<br>
+Thanks for your time! and Congratulations! you have succesfully translated a Parametric Statechart to Static Statechart. You must be Amazing!
+<br>
