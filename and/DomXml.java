@@ -54,12 +54,6 @@ public class DomXml {
 		String[] innerState1 = new String[50];
 		String[] innerState2 = new String[50];
 
-		//innerState1[0] = get.getMe();
-		//innerState1[1] = get.getMe();
-		//innerState2[0] = get.getMe();
-		//innerState2[1] = get.getMe();
-
-
 		// Save all the vertices' id's in an array
 		NodeList nList1 = doc.getElementsByTagName("vertices");
 		int tempLen1 = nList1.getLength();
@@ -70,7 +64,6 @@ public class DomXml {
 		// Capture to be directed edges
 		String topVert = "Top";
 		String bottomVert = "Bottom";
-	//	String[] noStateSensors = new String[100];
 		
 		// Storing the related nodes - To be stored as Hashmap in future iterations
 		Node aboveNode = company;
@@ -93,15 +86,7 @@ public class DomXml {
 		String[] outSync2 = new String[100]; 
 		String[] outSync3 = new String[100]; 
 
-		//outSync1[0] = get.getMe();		
-		//outSync1[1] = get.getMe();		
-		//outSync2[0] = get.getMe();
-		//outSync2[1] = get.getMe();
-		//outSync3[0] = get.getMe();
-		//outSync3[1] = get.getMe();
-
 		/// Would always be two innerState, for now
-			
 
 		for(int tempInner = 0 ; tempInner < numberSensors; tempInner++) {
 			outSync1[tempInner] = get.getMe();
@@ -127,13 +112,7 @@ public class DomXml {
 		}
 
 		System.out.println("Vertices");
-		/*for(int t = 0; t < vertId.length && vertId[t] != null; t++) {
-			System.out.println("id");
-			System.out.println(vertId[t]);
-			System.out.println("Incoming transitions");
-			System.out.println(vertInco[t]);
-		}
-*/
+
 		NodeList nList = doc.getElementsByTagName("outgoingTransitions");
 		int tempLen = nList.getLength();
 		int tapId = 0;
@@ -189,7 +168,6 @@ public class DomXml {
 		** Going through the same vertice loop 
 		*/
 
-
 		for (int temp1 = 0; temp1 < tempLen1; temp1++) {
 			Node nNode1 = nList1.item(temp1);
 			Element eElement1 = (Element) nNode1;
@@ -205,9 +183,6 @@ public class DomXml {
 					aboveNode = nNode1;
 				}
 			}
-		//	vertId[temp1] = eElement1.getAttribute("xmi:id");
-		//	vertInco[temp1] = eElement1.getAttribute("incomingTransitions");
-		//	vertName[temp1] = eElement1.getAttribute("name");
 
 		}
 
@@ -256,20 +231,12 @@ public class DomXml {
 
 				Node syncNode = sync1.returnNode();
 
-//				System.out.println(sync1.returnMe());
 				getOutTrans[] getOutArr = new getOutTrans[50];
 				for(int trTrans = 0; trTrans < numberSensors; trTrans++) {
 					getOutArr[trTrans] = new getOutTrans(doc, outSync1[trTrans], "", innerState1[trTrans]);
 					syncNode.appendChild(getOutArr[trTrans].returnMe());
 				}
 
-//				getOutTrans outgoing1 = new getOutTrans(doc, outSync1[0], "", innerState1[0]); //later fill in target
-//				getOutTrans outgoing2 = new getOutTrans(doc, outSync1[1], "", innerState1[1]);
-
-				//System.out.println(outgoing1.returnMe());
-//				syncNode.appendChild(outgoing1.returnMe());
-//				syncNode.appendChild(outgoing2.returnMe());
-			
 				nNode2.appendChild(syncNode); 
 
 				//generate Region's vertice
@@ -279,7 +246,7 @@ public class DomXml {
 				Node nodeRegVert = regVert.returnNode();
 
 				/* flexible section */
-				// Can be as many numbe rof time as you want, depending on the number of AND sensors available
+				// Can be as many number of time as you want, depending on the number of AND sensors available
 				//region1 inside the region-vertice
 	
 				getRegion[] regMe = new getRegion[50];
@@ -314,7 +281,7 @@ public class DomXml {
 				for(int tempOutNo = 1 ; tempOutNo < numberSensors; tempOutNo++) {
 					tempSync2Out =tempSync2Out + " " +outSync3[tempOutNo]; 
 				}
-			//	String tempSync2Out = outSync3[0] + " " + outSync3[1];
+
 				getVertices syncVert = new getVertices(doc, "sgraph:Synchronization", sync2Id, tempSync2Out, "");
 				Node syncNode1 = syncVert.returnNode();
 
@@ -344,7 +311,9 @@ public class DomXml {
 		System.out.println("end in");
 		System.out.println(aboveTransNodeElem.getAttribute("target"));
 		System.out.println(aboveTransNodeElem.getAttribute("xmi:id"));
+
 		//Remove all notation-children nodes- Are regeneragted later & remove, re-add notation:diagram -> the simpler action
+		
 		NodeList nList3 = doc.getElementsByTagName("notation:Diagram");
 		int tempLen3 = nList3.getLength();
 

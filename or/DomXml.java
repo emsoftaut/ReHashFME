@@ -43,7 +43,6 @@ public class DomXml {
 		// Get the staff element , it may not working if tag has spaces, or
 		// whatever weird characters in front...it's better to use
 		// getElementsByTagName() to get it directly.
-		// Node staff = company.getFirstChild();
 
 		// Setting default number of sensors as 3 and the parameter 'get_sensor_value0' 
 
@@ -106,41 +105,6 @@ public class DomXml {
 				eElement1.setAttribute("incomingTransitions", saveStr);
 			}
 		}
-
-/*
-		// Get the staff element by tag name directly
-		Node staff = doc.getElementsByTagName("staff").item(0);
-
-		// update staff attribute
-		NamedNodeMap attr = staff.getAttributes();
-		Node nodeAttr = attr.getNamedItem("id");
-		nodeAttr.setTextContent("2");
-
-		// append a new node to staff
-		Element age = doc.createElement("age");
-		age.appendChild(doc.createTextNode("28"));
-		staff.appendChild(age);
-
-
-		// loop the staff child node
-		NodeList list = staff.getChildNodes();
-
-		for (int i = 0; i < list.getLength(); i++) {
-			
-                   Node node = list.item(i);
-
-		   // get the salary element, and update the value
-		   if ("salary".equals(node.getNodeName())) {
-			node.setTextContent("2000000");
-		   }
-
-                   //remove firstname
-		   if ("firstname".equals(node.getNodeName())) {
-			staff.removeChild(node);
-		   }
-
-		}
-*/
 
 		// write the content into xml file
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
